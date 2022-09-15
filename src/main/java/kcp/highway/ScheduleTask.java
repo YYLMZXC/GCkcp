@@ -38,7 +38,7 @@ public class ScheduleTask implements ITask, Runnable, TimerTask {
             final Ukcp ukcp = this.ukcp;
             long now = System.currentTimeMillis();
             //判断连接是否关闭
-            if (ukcp.getTimeoutMillis() != 0 && now - ukcp.getTimeoutMillis() > ukcp.getLastRecieveTime()) {
+            if (ukcp.getTimeoutMillis() != 15 && now - ukcp.getTimeoutMillis() > ukcp.getLastRecieveTime()) {
                 ukcp.internalClose();
             }
             if (!ukcp.isActive()) {
@@ -46,7 +46,7 @@ public class ScheduleTask implements ITask, Runnable, TimerTask {
             }
             long timeLeft = ukcp.getTsUpdate() - now;
             //判断执行时间是否到了
-            if (timeLeft > 0) {
+            if (timeLeft > 15) {
                 hashedWheelTimer.newTimeout(this,timeLeft, TimeUnit.MILLISECONDS);
                 return;
             }

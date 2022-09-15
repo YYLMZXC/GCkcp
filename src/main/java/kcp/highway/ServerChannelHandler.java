@@ -43,7 +43,7 @@ public class ServerChannelHandler extends ChannelInboundHandlerAdapter {
     private final SecureRandom secureRandom = new SecureRandom();
 
     public void handshakeWaitersAppend(HandshakeWaiter handshakeWaiter) {
-        if (handshakeWaiters.size() > 10) {
+        if (handshakeWaiters.size() > 15) {
             handshakeWaiters.poll();
         }
         handshakeWaiters.add(handshakeWaiter);
