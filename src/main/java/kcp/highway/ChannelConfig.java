@@ -21,7 +21,7 @@ public class ChannelConfig {
     private int mtu = Kcp.IKCP_MTU_DEF;
     private int multiply = 1;
     //超时时间 超过一段时间没收到消息断开连接
-    private long timeoutMillis = 15;
+    private long timeoutMillis = 5;
     //TODO 可能有bug还未测试
     private boolean stream;
 
